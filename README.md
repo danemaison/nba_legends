@@ -12,4 +12,4 @@
 
 # Live Demo
 
-Try the game live at:
+Try the game live at: https://danemaison.github.io/nba_legends/.

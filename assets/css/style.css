@@ -1,0 +1,360 @@
+*{
+  box-sizing:border-box;
+}
+body{
+  margin:0;
+  background-image: url("../images/nba_cards/basketball-background.jpg");
+  background-size: cover;
+  height:104vh;
+  background-repeat: no-repeat;
+  font-family: 'Lato', sans-serif;
+  box-shadow:inset 0 0 0 3000px rgba(255,255,255,.4);
+  overflow-y: hidden;
+}
+h1{
+  color:black;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 5px;
+  font-size: 2rem;
+  text-shadow: 2px 0px 3px #C70000;
+}
+strong{
+  color:rgb(224, 45, 45);
+  text-shadow: 2px 0px 3px black;
+}
+h5{
+  font-family: 'Lobster', cursive;
+  font-size:.9rem;
+  color:black;
+}
+h3{
+  font-family: 'Lobster', cursive;
+  font-size:.8rem;
+  color:black;
+  text-shadow: 2px 0px 3px #C70000;
+}
+
+.modal{
+  z-index: 99;
+  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  background-color: white;
+  width:60vw;
+  height:60vh;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  border-top-right-radius: 150px;
+  border-top-left-radius: 150px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border:4px solid rgb(224, 45, 45);
+}
+.modal>button{
+  font-family: 'Lobster', cursive;
+  position:relative;
+  z-index:20;
+  font-size:1.1rem;
+  color:white;
+  border:1px solid black;
+  border-radius: 10px;
+  padding: 15px 35px;
+  background-color:rgb(224, 45, 45);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.modal>button:hover{
+  cursor:pointer;
+}
+.modal h1{
+  font-size:2rem;
+  text-shadow: none;
+}
+.modal .square{
+  border:4px solid rgb(224, 45, 45);
+  border-bottom: none;
+  height:250px;
+  width:250px;
+  position: absolute;
+  bottom:0;
+}
+.header{
+  width:100%;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header-wrapper{
+  margin-top:-10px;
+  display:flex;
+  justify-content: center;
+}
+.stats-container{
+  width:80%;
+  display:flex;
+  justify-content: space-around;
+}
+.wrapper{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stats{
+  color:white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.stats>h3{
+  margin:0;
+}
+.stat{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  background-image: url('../images/nba_cards/basketball.png');
+  background-position: center;
+  background-size:contain;
+  background-repeat: no-repeat;
+  border-radius:100%;
+  width:50px;
+  height:50px;
+  margin-top:-20px;
+  text-align: center;
+  box-shadow:inset 0 0 0 500px rgba(255,255,255,.2);
+}
+.stat>h5{
+  font-size:.92rem;
+}
+
+/*
+
+  Cards
+
+
+*/
+.card-container{
+  margin:auto;
+  margin-top:50px;
+  justify-content: center;
+  align-content: flex-end;
+  display:flex;
+  flex-wrap:wrap;
+}
+.card{
+  padding:0;
+  flex-basis:15%;
+  margin:2.5px 0;
+  height:90px;
+  background-color:transparent;
+  transition: .5s;
+}
+.card-inner{
+  position:relative;
+  height:100%;
+  width:100%;
+}
+.card-outside-bottom,
+.card-outside-top{
+  position:absolute;
+  background-size:54px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width:100%;
+  height:54.4%;
+  left:0;
+  z-index: 1;
+}
+.card-outside-top{
+  background-image: url("../images/nba_cards/trading-card-top.png");
+  top:0;
+  background-position: bottom;
+}
+.card-outside-bottom{
+  background-image:url('../images/nba_cards/trading-card-bottom.png');
+  bottom:0;
+  margin-top:-20px;
+}
+
+.card-player{
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index: 0;
+  background-size: 46px 70px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*
+
+  Handle opening of cards here
+
+*/
+
+.card:hover{
+  cursor: pointer;
+  transition: .2s;
+}
+
+.card.opened .card-outside-bottom{
+  bottom: -20px;
+  transition: .5s;
+  opacity: .3;
+}
+.card.opened .card-outside-top{
+  top: -20px;
+  transition: .5s;
+  opacity:.3;
+}
+.card .card-outside-bottom{
+  transition: .5s;
+  opacity: 1;
+}
+.card .card-outside-top{
+  transition: .5s;
+  opacity:1;
+}
+
+.card.matched .card-inner{
+  pointer-events: none;
+}
+
+.card.matched{
+  cursor:default;
+}
+.card.matched .card-outside-bottom{
+  bottom: -100px;
+  transition: .7s;
+  opacity: 0;
+  transform: rotateZ(200deg)
+}
+.card.matched .card-outside-top{
+  top: -100px;
+  transition: .7s;
+  opacity:0;
+  transform: rotateZ(-180deg)
+}
+
+/*
+
+    Helper Classes
+
+
+*/
+.hidden{
+display:none;
+}
+.disabled{
+  pointer-events: none;
+}
+
+/*
+
+    Background Images
+
+*/
+
+.bird{
+  background-image: url('../images/nba_cards/bird.png');
+}
+.jerrywest{
+  background-image: url('../images/nba_cards/jerrywest.jpg');
+}
+.kareem{
+  background-image: url('../images/nba_cards/kareem.jpg');
+}
+.kobe{
+  background-image: url('../images/nba_cards/kobe.jpg');
+}
+.lebron{
+  background-image: url('../images/nba_cards/lebron.jpg');
+}
+.magic{
+  background-image: url('../images/nba_cards/magic.jpg');
+}
+.mj{
+  background-image: url('../images/nba_cards/mj.jpg');
+}
+.shaq{
+  background-image: url('../images/nba_cards/shaq.jpg');
+}
+.wilt{
+  background-image: url('../images/nba_cards/wilt.jpg');
+}
+
+@media (min-width: 700px) and (min-height: 400px){
+  h1{
+    font-size:3rem;
+  }
+  h3{
+    font-size:1.4rem;
+  }
+  h5{
+    font-size:.95rem;
+  }
+  .header-wrapper{
+    margin-top:-10px;
+  }
+  .stat{
+    width:70px;
+    height:70px;
+  }
+  .card{
+    height:170px;
+  }
+  .card-outside-bottom,
+  .card-outside-top{
+    background-size:103px;
+  }
+  .card-player{
+    background-size: 88px 138px;
+  }
+  .card.opened .card-outside-bottom{
+    bottom: -30px;
+  }
+  .card.opened .card-outside-top{
+    top: -30px;
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 850px){
+  h1{
+    font-size:4rem;
+  }
+  h3{
+    font-size:1.7rem;
+  }
+  h5{
+    font-size:1.1rem;
+  }
+  .header-wrapper{
+    margin-top:0;
+  }
+  .stat{
+    width:90px;
+    height:90px;
+  }
+  .card{
+    height:240px;
+  }
+  .card-outside-bottom,
+  .card-outside-top{
+    background-size:130px;
+  }
+  .card-player{
+    background-size: 100px 150px;
+  }
+  .card.opened .card-outside-bottom{
+    bottom: -50px;
+  }
+  .card.opened .card-outside-top{
+    top: -50px;
+  }
+}

@@ -8,7 +8,6 @@
 
 * jQuery
 * HTML 5
-* Python
 * CSS 3
 
 # Live Demo
